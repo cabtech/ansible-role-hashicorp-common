@@ -1,0 +1,8 @@
+---
+hashicorp_arch: 'linux_amd64'
+hashicorp_dir_base: /opt/hashicorp
+hashicorp_dir_bin: /opt/hashicorp/bin
+hashicorp_dir_etc: /opt/hashicorp/etc
+hashicorp_dir_staging: /var/tmp/{{ansible_user_id}}
+hashicorp_repo: 'https://releases.hashicorp.com'
+...

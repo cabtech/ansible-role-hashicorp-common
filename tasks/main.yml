@@ -1,0 +1,23 @@
+---
+- name: 'make staging directory'
+  file:
+    state: directory
+    path: '{{hashicorp_dir_staging}}'
+    mode: '0755'
+  tags:
+  - hashicorp
+
+- name: 'make directories'
+  file:
+    state: directory
+    path: '{{item}}'
+    owner: root
+    group: root
+    mode: '0755'
+  loop:
+  - '{{hashicorp_dir_bin}}'
+  - '{{hashicorp_dir_etc}}'
+  become: true
+  tags:
+  - hashicorp
+...
