@@ -1,0 +1,12 @@
+---
+# --------------------------------
+
+- name: "Install required RedHat packages"
+  ansible.builtin.yum:
+    name: "{{ hashicorp_pkgs_common.redhat }}"
+    state: present
+  become: true
+  tags: [ct-hashicorp]
+
+# --------------------------------
+...

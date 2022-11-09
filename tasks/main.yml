@@ -1,26 +1,29 @@
 ---
-- name: 'make staging directory'
+# --------------------------------
+
+- name: "Make staging directory"
   ansible.builtin.file:
     state: directory
-    path: '{{hashicorp_dir_staging}}'
-    mode: '0755'
+    path: "{{ hashicorp_dir_staging }}"
+    mode: "0755"
   tags: [ct-hashicorp]
 
-- name: 'make main directories'
+- name: "Make main directories"
   ansible.builtin.file:
     state: directory
-    path: '{{item}}'
+    path: "{{ item }}"
     owner: root
     group: root
-    mode: '0755'
-  loop: '{{hashicorp_dirs}}'
+    mode: "0755"
+  loop: "{{ hashicorp_dirs }}"
   become: true
   tags: [ct-hashicorp]
 
-- name: 'installed required packages'
-  ansible.builtin.apt:
-    name: '{{hashicorp_dependent_pkgs}}'
-    state: present
-  become: true
+- name: "Include {{ ct_family }} tasks"
+  include_tasks: setup_{{ ct_family }}.yml
+  when:
+  - ct_family == "debian" or ct_family == "redhat"
   tags: [ct-hashicorp]
+
+# --------------------------------
 ...
