@@ -1,6 +1,18 @@
 ---
 # --------------------------------
 
+- name: "Set fact for aarch64 download path"
+  ansible.builtin.set_fact:
+    hashicorp_arch: "darwin_arm64"
+  when: ansible_architecture == "aarch64"
+  tags: [ct-hashicorp]
+
+- name: "Set fact for x86_64 download path"
+  ansible.builtin.set_fact:
+    hashicorp_arch: "linux_amd64"
+  when: ansible_architecture == "x86_64"
+  tags: [ct-hashicorp]
+
 - name: "Make staging directory"
   ansible.builtin.file:
     state: directory
@@ -19,10 +31,18 @@
   become: true
   tags: [ct-hashicorp]
 
-- name: "Include {{ ct_family }} tasks"
-  include_tasks: setup-{{ ct_family }}.yml
-  when:
-  - ct_family == "debian" or ct_family == "redhat"
+- name: "Include tasks (FF)"
+  ansible.builtin.include_tasks:
+    file: "{{ lookup('ansible.builtin.first_found', params) }}"
+  vars:
+    params:
+      files:
+      - "{{ ansible_distribution }}-{{ ansible_distribution_major_version.split('.')[0] }}.yml"
+      - "{{ ansible_distribution }}.yml"
+      - "{{ ansible_os_family }}.yml"
+      - default.yml
+      paths:
+      - "tasks"
   tags: [ct-hashicorp]
 
 # --------------------------------

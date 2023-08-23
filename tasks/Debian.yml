@@ -1,7 +1,7 @@
 ---
 # --------------------------------
 
-- name: "Install Debian packages"
+- name: "Debian : Install packages"
   ansible.builtin.apt:
     name: "{{ hashicorp_pkgs_common.debian }}"
     state: present

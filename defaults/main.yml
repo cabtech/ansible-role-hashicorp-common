@@ -1,5 +1,6 @@
 ---
-hashicorp_arch: "linux_amd64"
+# --------------------------------
+
 hashicorp_pkgs_common:
   debian: ["zip"]
   redhat: ["zip"]
@@ -10,6 +11,13 @@ hashicorp_dir_pkg: /opt/hashicorp/pkg
 hashicorp_dir_staging: /var/tmp/{{ ansible_user_id }}
 hashicorp_internet_timeout: 60
 hashicorp_repo: "https://releases.hashicorp.com"
-#
-hashicorp_dirs: ["{{ hashicorp_dir_base }}", "{{ hashicorp_dir_bin }}", "{{ hashicorp_dir_etc }}", "{{ hashicorp_dir_pkg }}", "/usr/local/etc/bash.d"]
+
+hashicorp_dirs:
+- "{{ hashicorp_dir_base }}"
+- "{{ hashicorp_dir_bin }}"
+- "{{ hashicorp_dir_etc }}"
+- "{{ hashicorp_dir_pkg }}"
+- /usr/local/etc/bash.d
+
+# --------------------------------
 ...
