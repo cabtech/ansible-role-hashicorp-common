@@ -3,7 +3,7 @@
 
 - name: "Set fact for aarch64 download path"
   ansible.builtin.set_fact:
-    hashicorp_arch: "darwin_arm64"
+    hashicorp_arch: "linux_arm"
   when: ansible_architecture == "aarch64"
   tags: [ct-hashicorp]
 
