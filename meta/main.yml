@@ -1,3 +1,18 @@
 ---
+# --------------------------------
+
 dependencies: []
+
+galaxy_info:
+  author: Tim Short
+  description: Install common elements for Hashicorp products
+  license: GPL v3
+  min_ansible_version: 2
+  namespace: cabtech
+  role_name: ansible_role_hashicorp_common
+  platforms:
+  - name: Ubuntu
+    versions: ["bionic", "focal", "jammy"]
+
+# --------------------------------
 ...
