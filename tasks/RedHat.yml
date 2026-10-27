@@ -2,7 +2,7 @@
 # --------------------------------
 
 - name: "RedHat : Install packages"
-  ansible.builtin.yum:
+  ansible.builtin.dnf:
     name: "{{ hashicorp_pkgs_common.redhat }}"
     state: present
   become: true
