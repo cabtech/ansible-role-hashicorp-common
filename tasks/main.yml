@@ -1,24 +1,29 @@
 ---
 # --------------------------------
 
+- name: "Include variables wrapper"
+  ansible.builtin.include_tasks:
+    file: variables.yml
+  tags: ["ct-hashicorp"]
+
 - name: "Set fact for aarch64 download path"
   ansible.builtin.set_fact:
     hashicorp_arch: "linux_arm64"
   when: ansible_facts['architecture'] == "aarch64"
-  tags: [ct-hashicorp]
+  tags: ["ct-hashicorp"]
 
 - name: "Set fact for x86_64 download path"
   ansible.builtin.set_fact:
     hashicorp_arch: "linux_amd64"
   when: ansible_facts['architecture'] == "x86_64"
-  tags: [ct-hashicorp]
+  tags: ["ct-hashicorp"]
 
 - name: "Make staging directory"
   ansible.builtin.file:
     state: directory
     path: "{{ hashicorp_dir_staging }}"
     mode: "0755"
-  tags: [ct-hashicorp]
+  tags: ["ct-hashicorp"]
 
 - name: "Make main directories"
   ansible.builtin.file:
@@ -29,7 +34,7 @@
     mode: "0755"
   loop: "{{ hashicorp_dirs }}"
   become: true
-  tags: [ct-hashicorp]
+  tags: ["ct-hashicorp"]
 
 - name: "Include tasks (FF)"
   ansible.builtin.include_tasks:
@@ -43,7 +48,7 @@
       - default.yml
       paths:
       - "tasks"
-  tags: [ct-hashicorp]
+  tags: ["ct-hashicorp"]
 
 # --------------------------------
 ...

@@ -6,7 +6,7 @@
     name: "{{ hashicorp_pkgs_common.debian }}"
     state: present
   become: true
-  tags: [ct-hashicorp]
+  tags: ["ct-hashicorp"]
 
 # --------------------------------
 ...
