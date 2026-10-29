@@ -4,7 +4,7 @@ Base role for Hashicorp roles such as Nomad, Vault and Consul
 ## Default variables
 | Name | Type | Value | Comment |
 | ---- | ---- | ----- | ------  |
-| hashicorp_pkgs_common | dict(list(string)) | see `defaults/main.yml` |  keyed by OS family |
+| hashicorp_pkgs_common | list(string) | see `vars/Debian.yml`, `vars/RedHat.yml` | per OS family |
 | hashicorp_dirs | list(UnixPath) | see `defaults/main.yml` | dirs to create |
 | hashicorp_dir_base | UnixPath | /opt/hashicorp ||
 | hashicorp_dir_bin | UnixPath | /opt/hashicorp/bin ||

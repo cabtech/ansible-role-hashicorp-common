@@ -3,7 +3,7 @@
 
 - name: "RedHat : Install packages"
   ansible.builtin.dnf:
-    name: "{{ hashicorp_pkgs_common.redhat }}"
+    name: "{{ hashicorp_pkgs_common }}"
     state: present
   become: true
   tags: ["ct-hashicorp"]

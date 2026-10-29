@@ -3,7 +3,7 @@
 
 - name: "Debian : Install packages"
   ansible.builtin.apt:
-    name: "{{ hashicorp_pkgs_common.debian }}"
+    name: "{{ hashicorp_pkgs_common }}"
     state: present
   become: true
   tags: ["ct-hashicorp"]

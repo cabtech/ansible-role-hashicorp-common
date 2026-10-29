@@ -1,9 +1,6 @@
 ---
 # --------------------------------
 
-hashicorp_pkgs_common:
-  debian: ["zip"]
-  redhat: ["zip"]
 hashicorp_dir_base: /opt/hashicorp
 hashicorp_dir_bin: /opt/hashicorp/bin
 hashicorp_dir_etc: /opt/hashicorp/etc
